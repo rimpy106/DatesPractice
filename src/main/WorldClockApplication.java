@@ -14,14 +14,21 @@ public class WorldClockApplication {
 	
 	private final static ZoneId BRISBANE = ZoneId.of("Australia/Brisbane");
 	private final static ZoneId DUBLIN = ZoneId.of("Europe/Dublin");
+	private final static ZoneId Chicago=ZoneId.of("America/Chicago");
 
 	public static void main(String[] args) {
 		
 
 		// first we need to capture what the time is at this exact moment...
 		ZonedDateTime zonedDateTime = ZonedDateTime.now();
-
+		System.out.println(zonedDateTime.withZoneSameInstant(BRISBANE).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
 		
+		ZonedDateTime zonedDateTime1=ZonedDateTime.now();
+		System.out.println(zonedDateTime1.withZoneSameInstant(DUBLIN).format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
+
+		ZonedDateTime zonedDateTime2=ZonedDateTime.now();
+		System.out.println(zonedDateTime2.withZoneSameInstant(Chicago).format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)));
+		System.out.println(zonedDateTime2.withZoneSameInstant(Chicago).format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
 		// from here you will need to create three system outs to print out the times and dates
 		
 		// ZonedDateTime has a method called withZoneSameInstant(<ZoneId>) which gives you the exact date time in the
